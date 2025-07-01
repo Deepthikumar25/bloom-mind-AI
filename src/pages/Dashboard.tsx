@@ -1,12 +1,14 @@
-
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import Navigation from "@/components/Navigation";
 import { Heart, Target, Timer, CheckSquare, Lightbulb, TrendingUp, Play, Pause, RotateCcw, Coffee, Zap, Calendar } from "lucide-react";
+import UserProfile from "@/components/UserProfile";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Dashboard = () => {
+  const { user } = useAuth();
   const [moodScore, setMoodScore] = useState(75);
   const [focusTime, setFocusTime] = useState(0);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
@@ -78,9 +80,10 @@ const Dashboard = () => {
 
   const getGreeting = () => {
     const hour = currentTime.getHours();
-    if (hour < 12) return "Good Morning";
-    if (hour < 17) return "Good Afternoon";
-    return "Good Evening";
+    const name = user?.name || 'there';
+    if (hour < 12) return `Good Morning, ${name}`;
+    if (hour < 17) return `Good Afternoon, ${name}`;
+    return `Good Evening, ${name}`;
   };
 
   const getMotivationalMessage = () => {
@@ -112,7 +115,7 @@ const Dashboard = () => {
                 </p>
               </div>
               <div className="hidden md:flex items-center space-x-4">
-                <div className="glass-card p-4 rounded-lg">
+                <div className="glass-card p-4 rounded-lg neon-glow">
                   <div className="flex items-center space-x-2">
                     <Calendar className="h-5 w-5 text-wellness-blue" />
                     <span className="text-slate-800 font-semibold">
@@ -152,8 +155,13 @@ const Dashboard = () => {
           {/* Dashboard Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
+            {/* User Profile - New */}
+            <div className="md:col-span-1">
+              <UserProfile />
+            </div>
+
             {/* Mood Pulse */}
-            <Card className="glass-card hover:shadow-2xl transition-all duration-500 animate-scale-in hover:-translate-y-1">
+            <Card className="glass-card hover:shadow-2xl transition-all duration-500 animate-scale-in hover:-translate-y-1 floating-card neon-glow">
               <CardHeader className="flex flex-row items-center space-y-0 pb-2">
                 <div className="flex items-center space-x-2">
                   <div className="p-2 rounded-lg bg-gradient-to-r from-wellness-pink to-wellness-purple shadow-lg">
@@ -187,7 +195,7 @@ const Dashboard = () => {
             </Card>
 
             {/* Focus Timer */}
-            <Card className="glass-card hover:shadow-2xl transition-all duration-500 animate-scale-in hover:-translate-y-1">
+            <Card className="glass-card hover:shadow-2xl transition-all duration-500 animate-scale-in hover:-translate-y-1 floating-card neon-glow">
               <CardHeader className="flex flex-row items-center space-y-0 pb-2">
                 <div className="flex items-center space-x-2">
                   <div className="p-2 rounded-lg bg-gradient-to-r from-wellness-blue to-wellness-indigo shadow-lg">
@@ -230,7 +238,7 @@ const Dashboard = () => {
             </Card>
 
             {/* Productivity Stats */}
-            <Card className="glass-card hover:shadow-2xl transition-all duration-500 animate-scale-in hover:-translate-y-1">
+            <Card className="glass-card hover:shadow-2xl transition-all duration-500 animate-scale-in hover:-translate-y-1 floating-card neon-glow">
               <CardHeader className="flex flex-row items-center space-y-0 pb-2">
                 <div className="flex items-center space-x-2">
                   <div className="p-2 rounded-lg bg-gradient-to-r from-wellness-purple to-wellness-pink shadow-lg">
@@ -258,7 +266,7 @@ const Dashboard = () => {
             </Card>
 
             {/* Task Tracker */}
-            <Card className="glass-card hover:shadow-2xl transition-all duration-500 animate-scale-in md:col-span-2 hover:-translate-y-1">
+            <Card className="glass-card hover:shadow-2xl transition-all duration-500 animate-scale-in md:col-span-2 hover:-translate-y-1 floating-card neon-glow">
               <CardHeader className="flex flex-row items-center space-y-0 pb-2">
                 <div className="flex items-center space-x-2">
                   <div className="p-2 rounded-lg bg-gradient-to-r from-wellness-teal to-wellness-cyan shadow-lg">
@@ -311,7 +319,7 @@ const Dashboard = () => {
             </Card>
 
             {/* Wellness Tip */}
-            <Card className="glass-card hover:shadow-2xl transition-all duration-500 animate-scale-in hover:-translate-y-1">
+            <Card className="glass-card hover:shadow-2xl transition-all duration-500 animate-scale-in hover:-translate-y-1 floating-card neon-glow">
               <CardHeader className="flex flex-row items-center space-y-0 pb-2">
                 <div className="flex items-center space-x-2">
                   <div className="p-2 rounded-lg bg-gradient-to-r from-wellness-green to-wellness-emerald shadow-lg">
