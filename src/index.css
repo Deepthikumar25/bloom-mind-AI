@@ -16,7 +16,7 @@
     --popover: 255 255 255;
     --popover-foreground: 15 23 42;
 
-    --primary: 79 70 229;
+    --primary: 99 102 241;
     --primary-foreground: 248 250 252;
 
     --secondary: 241 245 249;
@@ -33,7 +33,7 @@
 
     --border: 226 232 240;
     --input: 226 232 240;
-    --ring: 79 70 229;
+    --ring: 99 102 241;
 
     --radius: 0.75rem;
   }
@@ -48,7 +48,7 @@
     --popover: 30 41 59;
     --popover-foreground: 248 250 252;
 
-    --primary: 139 92 246;
+    --primary: 129 140 248;
     --primary-foreground: 15 23 42;
 
     --secondary: 51 65 85;
@@ -65,7 +65,7 @@
 
     --border: 51 65 85;
     --input: 51 65 85;
-    --ring: 139 92 246;
+    --ring: 129 140 248;
   }
 }
 
@@ -81,18 +81,26 @@
 
 @layer utilities {
   .glass-card {
-    @apply bg-white/80 backdrop-blur-sm border border-white/20 shadow-xl;
+    @apply bg-white/90 backdrop-blur-md border border-white/30 shadow-2xl;
   }
   
   .dark .glass-card {
-    @apply bg-slate-800/80 border-slate-700/50;
+    @apply bg-slate-800/90 border-slate-700/40;
   }
   
   .gradient-bg {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
   }
   
   .wellness-gradient {
-    background: linear-gradient(135deg, #10B981 0%, #14B8A6 50%, #4F46E5 100%);
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 30%, #06b6d4 70%, #10b981 100%);
+  }
+  
+  .hero-gradient {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+  }
+  
+  .dark .hero-gradient {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
   }
 }

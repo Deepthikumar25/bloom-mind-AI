@@ -43,25 +43,27 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+    <div className="min-h-screen hero-gradient">
       <Navigation />
       
       <div className="pt-24 pb-12 px-4 flex items-center justify-center min-h-screen">
         <Card className="w-full max-w-md glass-card animate-scale-in">
           <CardHeader className="text-center space-y-4">
-            <div className="mx-auto p-3 rounded-full bg-gradient-to-r from-wellness-blue to-wellness-purple">
+            <div className="mx-auto p-4 rounded-2xl bg-gradient-to-r from-wellness-blue to-wellness-purple shadow-lg">
               <Brain className="h-8 w-8 text-white" />
             </div>
-            <CardTitle className="text-2xl font-bold">Welcome to Thrive AI</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-2xl font-bold bg-gradient-to-r from-wellness-blue to-wellness-purple bg-clip-text text-transparent">
+              Welcome to Thrive AI
+            </CardTitle>
+            <CardDescription className="text-base">
               Your journey to workplace wellness starts here
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs defaultValue="login" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="login">Login</TabsTrigger>
-                <TabsTrigger value="signup">Sign Up</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2 bg-white/50 backdrop-blur-sm">
+                <TabsTrigger value="login" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-wellness-blue data-[state=active]:to-wellness-purple data-[state=active]:text-white">Login</TabsTrigger>
+                <TabsTrigger value="signup" className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-wellness-purple data-[state=active]:to-wellness-pink data-[state=active]:text-white">Sign Up</TabsTrigger>
               </TabsList>
               
               <TabsContent value="login">
@@ -74,7 +76,7 @@ const Login = () => {
                       type="email"
                       placeholder="Enter your email"
                       required
-                      className="transition-all duration-200 focus:ring-2 focus:ring-wellness-blue"
+                      className="bg-white/50 backdrop-blur-sm border-wellness-blue/20 focus:border-wellness-blue/40 focus:ring-wellness-blue/20"
                     />
                   </div>
                   <div className="space-y-2">
@@ -86,7 +88,7 @@ const Login = () => {
                         type={showPassword ? "text" : "password"}
                         placeholder="Enter your password"
                         required
-                        className="transition-all duration-200 focus:ring-2 focus:ring-wellness-blue pr-10"
+                        className="bg-white/50 backdrop-blur-sm border-wellness-blue/20 focus:border-wellness-blue/40 focus:ring-wellness-blue/20 pr-10"
                       />
                       <Button
                         type="button"
@@ -105,7 +107,7 @@ const Login = () => {
                   </div>
                   <Button 
                     type="submit" 
-                    className="w-full bg-wellness-blue hover:bg-wellness-blue/90" 
+                    className="w-full bg-gradient-to-r from-wellness-blue to-wellness-purple hover:from-wellness-purple hover:to-wellness-blue shadow-lg" 
                     disabled={isLoading}
                   >
                     {isLoading ? "Signing in..." : "Sign In"}
@@ -123,7 +125,7 @@ const Login = () => {
                       type="email"
                       placeholder="Enter your email"
                       required
-                      className="transition-all duration-200 focus:ring-2 focus:ring-wellness-blue"
+                      className="bg-white/50 backdrop-blur-sm border-wellness-purple/20 focus:border-wellness-purple/40 focus:ring-wellness-purple/20"
                     />
                   </div>
                   <div className="space-y-2">
@@ -135,7 +137,7 @@ const Login = () => {
                         type={showPassword ? "text" : "password"}
                         placeholder="Create a password"
                         required
-                        className="transition-all duration-200 focus:ring-2 focus:ring-wellness-blue pr-10"
+                        className="bg-white/50 backdrop-blur-sm border-wellness-purple/20 focus:border-wellness-purple/40 focus:ring-wellness-purple/20 pr-10"
                       />
                       <Button
                         type="button"
@@ -154,7 +156,7 @@ const Login = () => {
                   </div>
                   <Button 
                     type="submit" 
-                    className="w-full bg-wellness-purple hover:bg-wellness-purple/90" 
+                    className="w-full bg-gradient-to-r from-wellness-purple to-wellness-pink hover:from-wellness-pink hover:to-wellness-purple shadow-lg" 
                     disabled={isLoading}
                   >
                     {isLoading ? "Creating account..." : "Create Account"}

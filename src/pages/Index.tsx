@@ -10,27 +10,31 @@ const Index = () => {
     {
       icon: Heart,
       title: "Wellness Tracking",
-      description: "Monitor your mood, stress levels, and overall wellbeing with AI-powered insights"
+      description: "Monitor your mood, stress levels, and overall wellbeing with AI-powered insights",
+      color: "from-wellness-pink to-wellness-purple"
     },
     {
       icon: Target,
       title: "Productivity Focus",
-      description: "Set goals, track tasks, and boost your productivity with smart recommendations"
+      description: "Set goals, track tasks, and boost your productivity with smart recommendations",
+      color: "from-wellness-blue to-wellness-indigo"
     },
     {
       icon: Gamepad2,
       title: "Stress Relief Games",
-      description: "Interactive games designed to reduce stress and enhance mental clarity"
+      description: "Interactive games designed to reduce stress and enhance mental clarity",
+      color: "from-wellness-teal to-wellness-cyan"
     },
     {
       icon: BarChart3,
       title: "Progress Analytics",
-      description: "Visualize your wellness journey with comprehensive charts and insights"
+      description: "Visualize your wellness journey with comprehensive charts and insights",
+      color: "from-wellness-green to-wellness-emerald"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+    <div className="min-h-screen hero-gradient">
       <Navigation />
       
       {/* Hero Section */}
@@ -38,7 +42,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto text-center">
           <div className="animate-fade-in-up">
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-wellness-blue via-wellness-purple to-wellness-teal bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-wellness-blue via-wellness-purple to-wellness-pink bg-clip-text text-transparent animate-gradient-shift bg-[length:200%_200%]">
                 Thrive AI
               </span>
             </h1>
@@ -48,13 +52,13 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/dashboard">
-                <Button size="lg" className="bg-wellness-blue hover:bg-wellness-blue/90 text-white px-8 py-3 text-lg">
+                <Button size="lg" className="bg-gradient-to-r from-wellness-blue to-wellness-purple hover:from-wellness-purple hover:to-wellness-blue text-white px-8 py-3 text-lg shadow-lg hover:shadow-xl transition-all duration-300">
                   Get Started
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link to="/games">
-                <Button variant="outline" size="lg" className="px-8 py-3 text-lg">
+                <Button variant="outline" size="lg" className="px-8 py-3 text-lg border-2 border-wellness-blue/20 hover:border-wellness-blue/40 hover:bg-wellness-blue/5">
                   Try Games
                   <Gamepad2 className="ml-2 h-5 w-5" />
                 </Button>
@@ -82,15 +86,15 @@ const Index = () => {
               return (
                 <Card 
                   key={index} 
-                  className="p-6 glass-card hover:shadow-xl transition-all duration-300 animate-scale-in group"
+                  className="p-6 glass-card hover:shadow-2xl transition-all duration-500 animate-scale-in group hover:-translate-y-2"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <div className="flex flex-col items-center text-center space-y-4">
-                    <div className="p-3 rounded-full bg-gradient-to-r from-wellness-blue to-wellness-purple group-hover:scale-110 transition-transform duration-300">
+                    <div className={`p-4 rounded-2xl bg-gradient-to-r ${feature.color} group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                     <h3 className="text-xl font-semibold">{feature.title}</h3>
-                    <p className="text-muted-foreground">{feature.description}</p>
+                    <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                   </div>
                 </Card>
               );
@@ -102,8 +106,9 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <Card className="p-12 glass-card wellness-gradient">
-            <div className="animate-fade-in-up">
+          <Card className="p-12 glass-card overflow-hidden relative">
+            <div className="absolute inset-0 wellness-gradient opacity-90"></div>
+            <div className="relative z-10 animate-fade-in-up">
               <Brain className="h-16 w-16 text-white mx-auto mb-6 animate-bounce-subtle" />
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                 Ready to transform your workplace wellness?
@@ -112,7 +117,7 @@ const Index = () => {
                 Join thousands of employees who are already thriving with AI-powered wellness insights
               </p>
               <Link to="/login">
-                <Button size="lg" variant="secondary" className="px-8 py-3 text-lg">
+                <Button size="lg" variant="secondary" className="px-8 py-3 text-lg bg-white/20 backdrop-blur-sm border border-white/30 text-white hover:bg-white/30 transition-all duration-300">
                   Start Your Journey
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
